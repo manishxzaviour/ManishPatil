@@ -1,5 +1,6 @@
 body{
 	background-color:black;
+	background-image:url('./res/bg.jpg');
 	overflow:hidden;
 	position:fixed;
 	overflow:hidden;
@@ -10,6 +11,13 @@ body{
 	z-index:1;
 	height:100vh;
 	width:100vw;
+	cursor: url('./res/cursor/normal.cur'), auto;
+}
+body:hover{
+	cursor: url('./res/cursor/normal.cur'), auto;
+}
+body:active{
+	cursor:url('./res/cursor/click.cur'), grabbing;
 }
 canvas div{
 	margin:0px;
@@ -20,5 +28,20 @@ canvas div{
 	width:100%;
 	position:fixed;
 	z-index:2;
+}
+.scene2Button{
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:100%;
+	border:none;
+	background-color:transparent;
+	filter: drop-shadow(-5px 5px rgba(250,200,200,0.3));
+}
+.scene2Button:hover{
+	cursor:url('./res/cursor/help.cur'), help;
+	transform:scale(0.95,0.95);
+}
+.scene2Button:active{
+	cursor:url('./res/cursor/click.cur'), grabbing;
 }
 

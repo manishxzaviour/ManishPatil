@@ -2,7 +2,7 @@ let sceneWrapper=document.querySelector('#sceneWrapper');
 sceneWrapper.width=window.innerWidth*devicePixelRatio;
 sceneWrapper.height=window.innerHeight*devicePixelRatio;
 
-class scene1{
+class Scene1{
 	constructor(sceneWrapper){
 		this.sceneWrapper=sceneWrapper;
 		this.background=document.createElement('canvas');
@@ -43,10 +43,10 @@ class scene1{
 			'He has nothing interesting to do, unlike me.                              '
 		];
 		this.cat=[
-			[0.6,0.9], 
+			[0.55,0.85], 
 			['white','48px cursive'],
 			'            ',
-			'hmph.     Pokey? more like Prickly                                        ',
+			'hmph. Pokey? more like Prickly                                        ',
 			'..................................',
 			'Hey Kiwi, well I am getting bored too.                                    ',
 			'Want to see a Map in a Book I found yesterday?                                   ',                                    
@@ -55,9 +55,9 @@ class scene1{
 		this.currentDialoguePosition=[0,0];
 		this.textBuffer='';
 		this.mouse=[0,0];
-		document.addEventListener('mousemove',function(e){this.mouse=[e.movementX,e.movementY]}.bind(this));
 	}
 	init(){
+		document.addEventListener('mousemove',function(e){this.mouse=[e.movementX,e.movementY]}.bind(this));
 		if(this.startFrameCount>=0){
 			setTimeout(this.init,10);
 			this.startFrameCount--;
@@ -96,8 +96,10 @@ class scene1{
 					],5);
 					break;
 				case 5:
-					this.background.remove();
-					new scene2(sceneWrapper);
+					setTimeout(function(){
+						this.background.style.filter='blur(10px)';
+					}.bind(this),500);
+					scene2.init();
 					this.animPersist=false;
 					break;
 			}
@@ -125,9 +127,42 @@ class scene1{
 
 }
 
-class scene2{
-
-
+class Scene2{
+	constructor(sceneWrapper){
+		this.sceneWrapper=sceneWrapper;
+		this.wrapper=document.createElement('div');
+		this.wrapper.style.position='fixed';
+		this.wrapper.style.zIndex=4;
+		this.wrapper.style.display='none';
+		this.wrapper.style.top='20%';
+		this.book=document.createElement('button');
+		this.book.style.height='75%';
+		this.book.style.backgroundImage='url(\'./res/scene2/book.png\')';
+		this.book.setAttribute('class','scene2Button');
+		this.downloadButton=document.createElement('button');
+		this.downloadButton.setAttribute('class','scene2Button');
+		this.downloadButton.style.height='25%';
+		this.downloadButton.style.backgroundImage='url(\'./res/scene2/resume.png\')';
+		this.wrapper.append(this.book);
+		this.wrapper.append(this.downloadButton);
+		this.sceneWrapper.append(this.wrapper);
+		this.init=this.init.bind(this);
+		this.startFrameCount=100;
+		this.scale=0;
+	}
+	init(){
+		if(this.startFrameCount>0){
+			this.wrapper.style.display='block';
+			this.wrapper.style.top=this.scale*0.5+'%';
+			this.wrapper.style.right=this.scale*25+'%';
+			this.wrapper.style.width=35*this.scale+'%';
+			this.wrapper.style.height=100*this.scale+'%';
+			this.scale=(1-this.startFrameCount/100);
+			this.startFrameCount--;
+			setTimeout(this.init,10);
+		}
+	}
 }
 
-new scene1(sceneWrapper);
+let scene1=new Scene1(sceneWrapper);
+let scene2=new Scene2(sceneWrapper);

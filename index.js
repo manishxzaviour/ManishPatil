@@ -13,7 +13,6 @@ class Scene1{
 		this.background.style.height='100%';
 		this.background.style.zIndex='3';
 		this.backgroundContext=this.background.getContext('2d');
-		this.sceneWrapper.append(this.background);
 		this.libraryBg=new Image();
 		this.charMask1=new Image();
 		this.charMask2=new Image();
@@ -57,6 +56,7 @@ class Scene1{
 		this.mouse=[0,0];
 	}
 	init(){
+		this.sceneWrapper.append(this.background);
 		document.addEventListener('mousemove',function(e){this.mouse=[e.movementX,e.movementY]}.bind(this));
 		if(this.startFrameCount>=0){
 			setTimeout(this.init,10);
@@ -139,12 +139,43 @@ class Scene2{
 		this.book.style.height='75%';
 		this.book.style.backgroundImage='url(\'./res/scene2/book.png\')';
 		this.book.setAttribute('class','scene2Button');
+		this.book.setAttribute('type','button');
 		this.downloadButton=document.createElement('button');
 		this.downloadButton.setAttribute('class','scene2Button');
 		this.downloadButton.style.height='25%';
 		this.downloadButton.style.backgroundImage='url(\'./res/scene2/resume.png\')';
+		this.downloadButton.setAttribute('type','button');
+		this.contextDiv=document.createElement('div');
+		this.contextDiv.style.position='fixed';
+		this.contextDiv.style.font='serif';
+		this.contextDiv.style.border='1px dotted purple';
+		this.contextDiv.style.color='rgb(150,150,150)';
+		this.contextDiv.style.zIndex=5;
+		this.book.addEventListener('mouseover',function(e){
+			this.book.addEventListener('mousemove',function(e){
+				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight+'px';
+				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth+'px';
+				this.contextDiv.innerHTML='Interactive map';
+			}.bind(this))
+		}.bind(this));
+		this.book.onclick=function(e){
+			this.wrapper.style.filter='blur(10px)';
+			setTimeout(scene3.init,500);
+		}.bind(this);
+
+		this.downloadButton.addEventListener('mouseover',function(e){
+			this.downloadButton.addEventListener('mousemove',function(e){
+				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight+'px';
+				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth+'px';
+				this.contextDiv.innerHTML='Direct Download';
+			}.bind(this))
+		}.bind(this));
+		this.downloadButton.onclick=function(e){
+			window.location.assign(window.location+'res/downloads/ManishPatil.pdf');
+		}.bind(this);
 		this.wrapper.append(this.book);
 		this.wrapper.append(this.downloadButton);
+		this.wrapper.append(this.contextDiv);
 		this.sceneWrapper.append(this.wrapper);
 		this.init=this.init.bind(this);
 		this.startFrameCount=100;
@@ -154,7 +185,7 @@ class Scene2{
 		if(this.startFrameCount>0){
 			this.wrapper.style.display='block';
 			this.wrapper.style.top=this.scale*0.5+'%';
-			this.wrapper.style.right=this.scale*25+'%';
+			this.wrapper.style.right=this.scale*32+'%';
 			this.wrapper.style.width=35*this.scale+'%';
 			this.wrapper.style.height=100*this.scale+'%';
 			this.scale=(1-this.startFrameCount/100);
@@ -163,6 +194,49 @@ class Scene2{
 		}
 	}
 }
+class Scene3{
+	constructor(sceneWrapper){
+		this.sceneWrapper=sceneWrapper;
+		this.background=document.createElement('canvas');
+		this.background.style.position='fixed';
+		this.background.width=sceneWrapper.width;
+		this.background.height=sceneWrapper.height;
+		this.background.style.width='100%';
+		this.background.style.height='100%';
+		this.background.style.zIndex='5';
+		this.backgroundContext=this.background.getContext('2d');
+		this.sceneWrapper.append(this.background);
+		this.map=new Image();
+		this.mapMask=new Image();
+		this.border=new Image();
+		this.compass=new Image();
+		this.map.src='./res/scene3/map.jpg';
+		this.mapMask.src='./res/scene3/mapMask.png';
+		this.border.src='./res/scene3/border.png';
+		this.compass.src='./res/scene3/compass.png';
+		this.charScreen=new Image();
+		this.charScreen.src='./res/scene3/charScreen.jpeg';
+		this.locations=[[0.275,0.47],[0.026,0.11]];
+		for(let x=1;x<=20;x++){
+			this.locations.push(new Image());
+			this.locations[x+1].src='./res/scene3/locations/'+x+'.png';
+		}
+		this.sceneScheduler=this.sceneScheduler.bind(this);
+		this.init=this.init.bind(this);
+	}
+	init(){
+		this.backgroundContext.drawImage(this.map,0,0,this.background.width,this.background.height);	
+		this.backgroundContext.drawImage(this.border,0,0,this.background.width,this.background.height);	
+		this.backgroundContext.drawImage(this.compass,0,0,this.background.width,this.background.height);	
+		this.backgroundContext.drawImage(this.locations[2],this.background.width*this.locations[1][0],this.background.height*this.locations[1][1],this.background.width*this.locations[0][0],this.background.height*this.locations[0][1]);	
+			
+	}
+	sceneScheduler(){
 
+	}
+	
+}
 let scene1=new Scene1(sceneWrapper);
 let scene2=new Scene2(sceneWrapper);
+let scene3=new Scene3(sceneWrapper);
+scene3.init();

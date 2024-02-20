@@ -41,7 +41,4 @@ canvas div{
 	cursor:url('./res/cursor/help.cur'), help;
 	transform:scale(0.95,0.95);
 }
-.scene2Button:active{
-	cursor:url('./res/cursor/click.cur'), grabbing;
-}
 

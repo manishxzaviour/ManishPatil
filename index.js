@@ -103,13 +103,17 @@ class Scene1{
 					this.animPersist=false;
 					break;
 			}
-			this.backgroundContext.fillText(this.textBuffer,this.currentDialoguePosition[0]*this.background.width+this.mouse[0],this.currentDialoguePosition[1]*this.background.height+this.mouse[1]);
+			this.backgroundContext.fillText(
+				this.textBuffer,
+				this.currentDialoguePosition[0]*this.background.width+this.mouse[0],
+				this.currentDialoguePosition[1]*this.background.height+this.mouse[1]);
 			window.requestAnimationFrame(this.sceneScheduler);
 		}
 	}
 	dialogueFill(dialogue,seq){
 
-					if(this.dialogueCounter[0]<dialogue.length && this.dialogueCounter[1]<dialogue[this.dialogueCounter[0]].length){						
+					if(this.dialogueCounter[0]<dialogue.length && 
+						this.dialogueCounter[1]<dialogue[this.dialogueCounter[0]].length){						
 						this.currentDialoguePosition=dialogue[0];
 						this.textBuffer+=dialogue[this.dialogueCounter[0]][this.dialogueCounter[1]];
 						this.dialogueCounter[1]++;
@@ -244,11 +248,21 @@ class Scene3{
 		this.compassI.src='./res/scene3/compass.png';
 		this.charScreen=new Image();
 		this.charScreen.src='./res/scene3/charScreen.jpeg';
-		this.locationsD=[[0.275,0.48],[0.026,0.11],];
-		this.locationsPos=[[0.22,0.18],[0.32,0.20],[0.4,0.12],[0.47,0.21],[0.49,0.27],[0.48,0.37],[0.41,0.32],[0.39,0.45],[0.04,0.36]];
+		this.locationsD=[[0.275,0.48],[0.026,0.11],[],];
+		this.locationsPos= [
+			[0.41449765747006767, 0.33585858585858586]
+			,[0.6203800104112441, 0.3888888888888889]
+			,[0.7533836543466944, 0.23863636363636365]
+			,[0.9036959916710047, 0.39595959595959596]
+			,[0.9383133784487246, 0.5161616161616162]
+			, [0.9301145236855805, 0.7123737373737373]
+			, [0.7925559604372723, 0.6045454545454545]
+			,[0.7497397188964081, 0.8608585858585859]
+			, [0.08472149921915668, 0.6628787878787878]
+		];
 		for(let x=0;x<=20;x++){
 			this.locationsD.push(new Image());
-			this.locationsD[x+2].src='./res/scene3/locations/'+x+'.png';
+			this.locationsD[x+3].src='./res/scene3/locations/'+x+'.png';
 		}
 		this.locations.style.position='fixed';
 		this.locations.width=sceneWrapper.width*this.locationsD[0][0];
@@ -270,13 +284,18 @@ class Scene3{
 		this.init=this.init.bind(this);
 		this.hazeClearAnim=this.hazeClearAnim.bind(this);
 		this.animPersist=true;
-		this.locationIndex=2;
+		this.locationIndex=3;
 		this.hazeFrameCount=40;
 		this.hazeCount=0;
 		this.hazePos=[];
+		this.locationsZoom=1.5;
 		this.mapMaskFrameCount=30;
 		this.mapMaskCount=0;
+		this.mapZoomPos=[0,0];//[this.backgroundMask.width*this.maskZoom/2,this.backgroundMask.height*this.maskZoom/2];
 		this.mapMaskADir=1;
+		this.maskBound=0.1;
+		this.peekInfo=document.createElement('div');
+		this.peekInfo.style.zIndex=11;
 	}
 	init(){
 		this.sceneWrapper.append(this.background);
@@ -288,17 +307,19 @@ class Scene3{
 		this.locationsContext.drawImage(this.locationsD[this.locationIndex],0,0,this.locations.width,this.locations.height);	
 		this.borderContext.drawImage(this.borderI,0,0,this.border.width,this.border.height);	
 		this.compassContext.drawImage(this.compassI,0,0,this.compass.width,this.compass.height);
-		this.initHaze();
+		this.compass.style.filter='drop-shadow(5px 5px rgba(0,0,0,0.5))';
+		//this.initHaze();
 		this.mousePos=[0,0];
 		this.mouseScroll=0;
 		this.mouseClick=false;
+		this.locationsIndex=2;
 		document.addEventListener('mouseup',function(e){
-			this.mousePos=[e.clientX,e.clientY];
+			this.mousePos=[e.clientX*window.devicePixelRatio,e.clientY*window.devicePixelRatio];
 			this.mouseClick=true;
 		}.bind(this));
 		document.addEventListener('mouseover',function(e){
 			document.addEventListener('mousemove',function(e){
-				this.mousePos=[e.clientX,e.clientY];
+				this.mousePos=[e.clientX*window.devicePixelRatio,e.clientY*window.devicePixelRatio];
 			}.bind(this));
 		}.bind(this));
 		document.addEventListener('wheel',function(e){
@@ -328,8 +349,19 @@ class Scene3{
 		this.hazePos.forEach(function(loc){
 			this.hazeContext.fillStyle=`rgba(230,230,255,${loc[2]})`;
 			this.hazeContext.beginPath();
-			this.hazeContext.arc(loc[0]-this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,loc[1],0.1*Math.min(this.haze.width,this.haze.height),0,2*Math.PI);
-			this.hazeContext.arc(this.background.width-loc[0]+this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,loc[1],0.1*Math.min(this.background.width,this.background.height),0,2*Math.PI);
+			this.hazeContext.arc(
+				loc[0]-this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,
+				loc[1],0.1*Math.min(this.haze.width,this.haze.height),
+				0,
+				2*Math.PI
+			);
+			this.hazeContext.arc(
+				this.background.width-loc[0]+this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,
+				loc[1],
+				0.1*Math.min(this.background.width,this.background.height),
+				0,
+				2*Math.PI
+			);
 			this.hazeContext.fill();
 		}.bind(this));
 		this.hazeCount++;
@@ -340,9 +372,64 @@ class Scene3{
 		this.elapsed=timestamp-this.start;
 		if(this.animPersist){
 			let maskShift=5*this.mapMaskCount/this.mapMaskFrameCount;
+			let mouseShift=[
+				this.mousePos[0]/this.background.width,
+				this.mousePos[1]/this.background.height
+			];
 			this.backgroundMask.style.filter=`drop-shadow(2px 2px rgba(0,0,0,${maskShift/5}))`;
 			this.backgroundMaskContext.clearRect(0,0,this.backgroundMask.width,this.backgroundMask.height);
-			this.backgroundMaskContext.drawImage(this.mapMask,-maskShift,-maskShift,this.backgroundMask.width+maskShift,this.backgroundMask.height+maskShift);	
+			this.backgroundContext.drawImage(this.map,0,0,this.background.width,this.background.height);	
+			this.backgroundMaskContext.drawImage(
+				this.mapMask,
+				-maskShift,
+				-maskShift,
+				this.backgroundMask.width+maskShift,
+				this.backgroundMask.height+maskShift
+			);
+			this.locationsContext.clearRect(0,0,this.locations.width,this.locations.height);
+			if(this.locationsIndex==2)this.locationsContext.drawImage(
+					this.map,
+					mouseShift[0]*this.map.naturalWidth-this.locations.width/2+this.background.width*0.08,
+					mouseShift[1]*this.map.naturalHeight-this.locations.height/2+this.background.height*0.08,
+					this.locations.width/this.locationsZoom,
+					this.locations.height/this.locationsZoom,
+					0,
+					0,
+					this.locations.width,
+					this.locations.height
+				);
+			else 	this.locationsContext.drawImage(
+					this.locationsD[this.locationsIndex],
+					0,
+					0,
+					this.locations.width,
+					this.locations.height
+				);
+			if(this.mouseClick){
+				let count=0;
+				this.locationsPos.forEach(function(val){
+					 if(
+						(
+							this.mousePos[0]<(val[0]+this.maskBound)*this.background.width
+							&&
+							this.mousePos[0]>(val[0]-this.maskBound)*this.background.width
+						)
+						&&
+						(
+							this.mousePos[1]<(val[1]+this.maskBound)*this.background.height
+							&&
+							this.mousePos[1]>(val[1]-this.maskBound)*this.background.height
+						)
+					)
+						{
+							this.locationsIndex=count+4;
+							this.mapZoomPos=val;
+						}
+					
+					count+=1;
+				}.bind(this));
+				this.mouseClick=false;
+			}
 			this.mapMaskCount+=this.mapMaskADir;
 			if(this.mapMaskCount==this.mapMaskFrameCount||this.mapMaskCount==0) this.mapMaskADir*=-1; 
 			window.requestAnimationFrame(this.sceneScheduler);

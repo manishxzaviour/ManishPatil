@@ -2,16 +2,9 @@ body{
 	background-color:black;
 	background-image:url('./res/bg.jpg');
 	overflow:hidden;
-	position:fixed;
-	overflow:hidden;
-	height:auto;
-	width:auto;
 	margin:0px;
 	padding:0px;
 	z-index:1;
-	height:100vh;
-	width:100vw;
-	cursor: url('./res/cursor/normal.cur'), auto;
 }
 body:hover{
 	cursor: url('./res/cursor/normal.cur'), auto;
@@ -23,11 +16,11 @@ canvas div{
 	margin:0px;
 	padding:0px;
 }
-#sceneWrapper{ 
+.background{	
 	height:100%;
 	width:100%;
 	position:fixed;
-	z-index:2;
+	
 }
 .scene2Button{
 	background-repeat:no-repeat;

@@ -221,7 +221,7 @@ class Scene3{
 		this.backgroundMask.height=sceneWrapper.height;
 		this.backgroundMask.style.width='100%';
 		this.backgroundMask.style.height='100%';
-		this.backgroundMask.style.zIndex='8';
+		this.backgroundMask.style.zIndex='7';
 		this.backgroundMaskContext=this.backgroundMask.getContext('2d');
 		this.border.style.position='fixed';
 		this.border.width=sceneWrapper.width;
@@ -242,6 +242,8 @@ class Scene3{
 		this.mapMask=new Image();
 		this.borderI=new Image();
 		this.compassI=new Image();
+		this.bookOpen=new Image();
+		this.bookOpen.src='./res/scene2/bookOpen.png';
 		this.map.src='./res/scene3/map.jpg';
 		this.mapMask.src='./res/scene3/mapMask.png';
 		this.borderI.src='./res/scene3/border.png';
@@ -271,7 +273,7 @@ class Scene3{
 		this.locations.style.height=100*this.locationsD[0][1]+'%';
 		this.locations.style.top=100*this.locationsD[1][1]+'%';
 		this.locations.style.left=100*this.locationsD[1][0]+'%';
-		this.locations.style.zIndex='7';
+		this.locations.style.zIndex='8';
 		this.locationsContext=this.locations.getContext('2d');
 		this.compass.style.position='fixed';
 		this.compass.width=sceneWrapper.width;
@@ -284,18 +286,21 @@ class Scene3{
 		this.init=this.init.bind(this);
 		this.hazeClearAnim=this.hazeClearAnim.bind(this);
 		this.animPersist=true;
-		this.locationIndex=3;
+		this.locationsIndex=3;
 		this.hazeFrameCount=40;
 		this.hazeCount=0;
 		this.hazePos=[];
 		this.locationsZoom=1.5;
 		this.mapMaskFrameCount=30;
 		this.mapMaskCount=0;
-		this.mapZoomPos=[0,0];//[this.backgroundMask.width*this.maskZoom/2,this.backgroundMask.height*this.maskZoom/2];
+		this.mapZoomPos=[0,0];
+		this.mapZoomScale=1;
 		this.mapMaskADir=1;
 		this.maskBound=0.1;
-		this.peekInfo=document.createElement('div');
-		this.peekInfo.style.zIndex=11;
+		this.mousePos=[0,0];
+		this.mouseScroll=0;
+		this.mouseClick=false;
+		this.mouseScoll=0;
 	}
 	init(){
 		this.sceneWrapper.append(this.background);
@@ -304,15 +309,13 @@ class Scene3{
 		this.sceneWrapper.append(this.compass);
 		this.sceneWrapper.append(this.locations);
 		this.backgroundContext.drawImage(this.map,0,0,this.background.width,this.background.height);	
-		this.locationsContext.drawImage(this.locationsD[this.locationIndex],0,0,this.locations.width,this.locations.height);	
+		this.locationsContext.drawImage(this.locationsD[this.locationsIndex],0,0,this.locations.width,this.locations.height);	
 		this.borderContext.drawImage(this.borderI,0,0,this.border.width,this.border.height);	
 		this.compassContext.drawImage(this.compassI,0,0,this.compass.width,this.compass.height);
 		this.compass.style.filter='drop-shadow(5px 5px rgba(0,0,0,0.5))';
-		//this.initHaze();
-		this.mousePos=[0,0];
-		this.mouseScroll=0;
-		this.mouseClick=false;
-		this.locationsIndex=2;
+		this.initHaze();
+		this.background.style.transition='0.5s';
+		this.backgroundMask.style.transition='0.5s';
 		document.addEventListener('mouseup',function(e){
 			this.mousePos=[e.clientX*window.devicePixelRatio,e.clientY*window.devicePixelRatio];
 			this.mouseClick=true;
@@ -323,7 +326,7 @@ class Scene3{
 			}.bind(this));
 		}.bind(this));
 		document.addEventListener('wheel',function(e){
-			this.mouseScroll=e.deltaY;
+			this.mouseScroll=e.deltaY<0?-0.25:0.25;
 		}.bind(this));
 		setTimeout(this.sceneScheduler,1000);
 	}
@@ -366,6 +369,7 @@ class Scene3{
 		}.bind(this));
 		this.hazeCount++;
 		if(this.hazeCount<this.hazeFrameCount) window.requestAnimationFrame(this.hazeClearAnim);
+		else this.hazeContext.drawImage(this.bookOpen,0,0,this.haze.width,this.haze.height);
 	}
 	sceneScheduler(timestamp){
 		if(this.start=undefined) this.start=timestamp;
@@ -376,6 +380,17 @@ class Scene3{
 				this.mousePos[0]/this.background.width,
 				this.mousePos[1]/this.background.height
 			];
+			if(this.mouseScroll!=0){
+				if(this.mapZoomScale>=1&&this.mapZoomScale<=5){
+					this.mapZoomScale+=this.mouseScroll;
+					this.mouseScroll=0;
+				}
+				else{
+					this.mapZoomScale=1;
+				}
+			}
+			this.background.style.transform=`scale(${this.mapZoomScale})`;
+			this.backgroundMask.style.transform=`scale(${this.mapZoomScale})`;
 			this.backgroundMask.style.filter=`drop-shadow(2px 2px rgba(0,0,0,${maskShift/5}))`;
 			this.backgroundMaskContext.clearRect(0,0,this.backgroundMask.width,this.backgroundMask.height);
 			this.backgroundContext.drawImage(this.map,0,0,this.background.width,this.background.height);	
@@ -387,7 +402,17 @@ class Scene3{
 				this.backgroundMask.height+maskShift
 			);
 			this.locationsContext.clearRect(0,0,this.locations.width,this.locations.height);
-			if(this.locationsIndex==2)this.locationsContext.drawImage(
+			if(this.locationsIndex!=2){
+				this.locationsContext.drawImage(
+					this.locationsD[this.locationsIndex],
+					0,
+					0,
+					this.locations.width,
+					this.locations.height
+				);
+			}
+			if(this.locationsIndex==2&&this.mapZoomScale==1){
+				this.locationsContext.drawImage(
 					this.map,
 					mouseShift[0]*this.map.naturalWidth-this.locations.width/2+this.background.width*0.08,
 					mouseShift[1]*this.map.naturalHeight-this.locations.height/2+this.background.height*0.08,
@@ -398,15 +423,10 @@ class Scene3{
 					this.locations.width,
 					this.locations.height
 				);
-			else 	this.locationsContext.drawImage(
-					this.locationsD[this.locationsIndex],
-					0,
-					0,
-					this.locations.width,
-					this.locations.height
-				);
-			if(this.mouseClick){
+			}
+			if(this.mouseClick&&this.mapZoomScale==1){
 				let count=0;
+				this.locationsIndex=2;
 				this.locationsPos.forEach(function(val){
 					 if(
 						(
@@ -421,14 +441,39 @@ class Scene3{
 							this.mousePos[1]>(val[1]-this.maskBound)*this.background.height
 						)
 					)
-						{
-							this.locationsIndex=count+4;
-							this.mapZoomPos=val;
-						}
-					
+					{
+						this.locationsIndex=count+4;
+						this.mapZoomPos=val;
+					}					
 					count+=1;
 				}.bind(this));
 				this.mouseClick=false;
+			}
+			if(this.mapZoomScale>1){
+				this.border.style.cursor='url(\'./res/cursor/move.cur\'), move';
+				this.background.style.left=
+					-this.mousePos[0]/window.devicePixelRatio
+					+this.background.clientWidth/2
+					+'px';
+				this.background.style.top=
+					-this.mousePos[1]/window.devicePixelRatio
+					+this.background.clientHeight/2
+					+'px';
+				this.backgroundMask.style.left=
+					-this.mousePos[0]/window.devicePixelRatio
+					+this.backgroundMask.clientWidth/2
+					+'px';
+				this.backgroundMask.style.top=
+					-this.mousePos[1]/window.devicePixelRatio
+					+this.backgroundMask.clientHeight/2
+					+'px';
+			}
+			else{
+				this.border.style.cursor='url(\'./res/cursor/normal.cur\'), auto';
+				this.background.style.top=this.border.height/2-this.background.height/2+'px';
+				this.background.style.left=this.border.width/2-this.background.width/2+'px';
+				this.backgroundMask.style.top=this.border.height/2-this.backgroundMask.height/2+'px';
+				this.backgroundMask.style.left=this.border.width/2-this.backgroundMask.width/2+'px';
 			}
 			this.mapMaskCount+=this.mapMaskADir;
 			if(this.mapMaskCount==this.mapMaskFrameCount||this.mapMaskCount==0) this.mapMaskADir*=-1; 

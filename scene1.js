@@ -68,7 +68,7 @@ export class Scene1{
 		//startup blur
 		if(this.startFrameCount>=0){
 			window.requestAnimationFrame(this.init);
-			this.startFrameCount--;i
+			this.startFrameCount--;
 			//assuming 60Hz
 			this.backgroundContext.filter=`blur(${50*this.startFrameCount/60}px)`; 
 			this.backgroundContext.drawImage(this.libraryBg,0,0,this.background.width,this.background.height);

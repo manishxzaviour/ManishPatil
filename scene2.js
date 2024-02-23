@@ -28,8 +28,8 @@ export class Scene2{
 		
 		this.book.addEventListener('mouseover',function(e){
 			this.book.addEventListener('mousemove',function(e){
-				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight+'px';
-				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth+'px';
+				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight-5+'px';
+				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth-5+'px';
 				this.contextDiv.innerHTML='Interactive map';
 			}.bind(this))
 		}.bind(this));
@@ -44,8 +44,8 @@ export class Scene2{
 
 		this.downloadButton.addEventListener('mouseover',function(e){
 			this.downloadButton.addEventListener('mousemove',function(e){
-				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight+'px';
-				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth+'px';
+				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight-5+'px';
+				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth-5+'px';
 				this.contextDiv.innerHTML='Direct Download';
 			}.bind(this))
 		}.bind(this));

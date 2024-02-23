@@ -25,13 +25,14 @@ export class Scene3{
 		this.border.setAttribute('class','background');
 		this.border.style.zIndex='10';
 		this.borderContext=this.border.getContext('2d');
-		
+					
 		this.haze.width=sceneWrapper.width;
 		this.haze.height=sceneWrapper.height;
 		this.haze.setAttribute('class','background');
 		this.haze.style.zIndex='5';
 		this.hazeContext=this.haze.getContext('2d');
-	
+		
+		this.locationsD=[[0.275,0.48],[0.026,0.11],[],];   //[w,h]//[x,y]// 2=>map, 3=>mapLow
 		this.locations.style.position='fixed';
 		this.locations.width=sceneWrapper.width*this.locationsD[0][0];
 		this.locations.height=sceneWrapper.height*this.locationsD[0][1];
@@ -61,7 +62,6 @@ export class Scene3{
 		this.compassI.src='./res/scene3/compass.png';
 		this.charScreen.src='./res/scene3/charScreen.jpeg';
 		
-		this.locationsD=[[0.275,0.48],[0.026,0.11],[],];   // 2=>map, 3=>mapLow
 		this.locationsPos= [
 			[0.41449765747006767, 0.33585858585858586]
 			,[0.6203800104112441, 0.3888888888888889]
@@ -101,12 +101,6 @@ export class Scene3{
 		this.done=false;
 	}
 	init(){
-		this.sceneWrapper.append(this.background);
-		this.sceneWrapper.append(this.backgroundMask);
-		this.sceneWrapper.append(this.border);
-		this.sceneWrapper.append(this.compass);
-		this.sceneWrapper.append(this.locations);
-
 		this.backgroundContext.drawImage(this.map,0,0,this.background.width,this.background.height);	
 		this.locationsContext.drawImage(this.locationsD[this.locationsIndex],0,0,this.locations.width,this.locations.height);	
 		this.borderContext.drawImage(this.borderI,0,0,this.border.width,this.border.height);	
@@ -117,6 +111,12 @@ export class Scene3{
 		this.background.style.transition='0.5s';
 		this.backgroundMask.style.transition='0.5s';
 		
+		this.sceneWrapper.append(this.background);
+		this.sceneWrapper.append(this.backgroundMask);
+		this.sceneWrapper.append(this.border);
+		this.sceneWrapper.append(this.compass);
+		this.sceneWrapper.append(this.locations);
+	
 		document.addEventListener('mouseup',function(e){
 			this.mousePos=[e.clientX*window.devicePixelRatio,e.clientY*window.devicePixelRatio];
 			this.mouseClick=true;
@@ -136,20 +136,18 @@ export class Scene3{
 		
 		setTimeout(this.sceneScheduler,1000);
 	}
-	initHaze(){	
-		this.sceneWrapper.append(this.haze);
-		
+
+	initHaze(){
 		this.haze.style.filter='blur(10px)';
-		
-		for(let x=0;x<=this.background.height;x+=this.background.height*0.1){
-			for(let y=this.background.width/2;y>=0;y-=0.1*this.background.width/2){
+		for(let x=0;x<=this.haze.height;x+=this.haze.height*0.1){
+			for(let y=this.haze.width/2;y>=0;y-=0.1*this.haze.width/2){
 				this.hazePos.push([y,x,Math.min(Math.random(),0.5)]);
 			}
 		}
 		this.hazeClearAnim();
 	}
 	hazeClearAnim(timestamp){
-
+		this.sceneWrapper.append(this.haze);
 		if(this.hazeStart=undefined) this.hazeStart=timestamp;
 		this.elapsed=timestamp-this.hazeStart;
 	
@@ -171,9 +169,9 @@ export class Scene3{
 				2*Math.PI
 			);
 			this.hazeContext.arc(
-				this.background.width-loc[0]+this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,
+				this.haze.width-loc[0]+this.hazeCount*this.haze.width*0.5/this.hazeFrameCount,
 				loc[1],
-				0.1*Math.min(this.background.width,this.background.height),
+				0.1*Math.min(this.haze.width,this.haze.height),
 				0,
 				2*Math.PI
 			);

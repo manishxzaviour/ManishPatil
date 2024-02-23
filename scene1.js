@@ -23,7 +23,7 @@ export class Scene1{
 		this.init=this.init.bind(this);
 		this.libraryBg.onload=this.init;
 		this.animPersist=true;
-		this.startFrameCount=60;
+		this.startFrameCount=90;
 		this.downloadLink=document.createElement('a');
 		this.downloadLink.href='./downloads/ManishPatil.pdf';
 		
@@ -70,7 +70,7 @@ export class Scene1{
 			window.requestAnimationFrame(this.init);
 			this.startFrameCount--;
 			//assuming 60Hz
-			this.backgroundContext.filter=`blur(${50*this.startFrameCount/60}px)`; 
+			this.backgroundContext.filter=`blur(${50*this.startFrameCount/90}px)`; 
 			this.backgroundContext.drawImage(this.libraryBg,0,0,this.background.width,this.background.height);
 		}
 		else{

@@ -12,6 +12,14 @@ body:hover{
 body:active{
 	cursor:url('./res/cursor/click.cur'), grabbing;
 }
+h1{
+	color:ivory; 
+	position:absolute; 
+	left:50%; 
+	top:50%;  
+	text-align:center; 
+	transform:translate(-50% ,-50%);
+}
 canvas div{
 	margin:0px;
 	padding:0px;

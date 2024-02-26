@@ -1,10 +1,17 @@
 body{
 	background-color:black;
+	font-family:"sherwood",serif;
 	background-image:url('./res/bg.jpg');
 	overflow:hidden;
 	margin:0px;
 	padding:0px;
 	z-index:1;
+	color:ivory;
+}
+@font-face{
+	font-family:'sherwood';
+	src:url('./res/font/sherwood.woff2');
+
 }
 body:active{
 	cursor:url('./res/cursor/click.cur'), grabbing;
@@ -13,7 +20,6 @@ body:hover{
 	cursor: url('./res/cursor/normal.cur'), auto;
 }
 h1{
-	color:ivory; 
 	position:absolute; 
 	left:50%; 
 	top:50%;  
@@ -57,9 +63,23 @@ canvas div{
 	display:flex;
 	flex-direction:column;
 	height:100%;
-	width:30%;
+	width:25%;
 }
 .buttonsContainer button{
-	height:30%;
+	height:50%;
 	width:100%;
+}
+.character{
+	width:70%;
+	height:12%;
+	margin:2px 15%;
+	border: medium outset rgba(250,180,50,0.5);
+	border-radius:2px;
+}
+.textWrapper{
+	background-image:url('./res/scene4/textureD.png');
+	border:medium double #130606;
+	width:30%;
+	height:100%;
+	overflow:hidden;
 }

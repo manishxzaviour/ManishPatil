@@ -9,11 +9,13 @@ export class Scene4{
 		this.textureD=new Image();
 		this.textureL=new Image();
 		this.textureLCrack=new Image();
+		this.headdingWrapper=new Image();
 		this.selectorImg=[];
 		this.buttonsImg=[];
+		this.charSelectorImg=[];
 		this.selectors=[];
 		this.buttons=[];
-		this.headdingWrapper=new Image();
+		this.characters=[];
 		
 		for(let x=1;x<=9;x++){
 			this.selectorImg.push(new Image());
@@ -22,6 +24,10 @@ export class Scene4{
 		for(let x=1;x<=8;x++){
 			this.buttonsImg.push(new Image());
 			this.buttonsImg[x-1].src='./res/scene4/ui/buttons/'+x+'.png';
+		}
+		for(let x=1;x<=7;x++){
+			this.charSelectorImg.push(new Image());
+			this.charSelectorImg[x-1].src='./res/scene4/characters/'+x+'.png';
 		}
 
 		this.bg.src='./res/scene4/bg.png';
@@ -38,6 +44,32 @@ export class Scene4{
 
 		this.init=this.init.bind(this);
 	}
+	init(){
+		this.background=document.createElement('div');
+		this.background.style.display='flex';
+		this.background.style.flexDirection='column';
+		this.background.style.height='100%';
+		this.background.style.width='100%';
+		this.background.style.backgroundImage='url(\''+this.bg.src+'\')';
+		this.background.style.backgroundSize='100% 100%';
+		this.background.style.justifyContent='space-between';
+		this.backgroundVert=document.createElement('div');
+		this.backgroundVert.style.height='70%';
+		this.backgroundVert.style.width='100%';
+		this.backgroundVert.style.display='flex';
+		this.backgroundVert.style.justifyContent='space-between';
+		this.backgroundVert.style.flexDirection='row';
+		this.leftTextWrapper=document.createElement('div');
+		this.leftTextWrapper.setAttribute('class','textWrapper');
+		this.rightTextWrapper=document.createElement('div');
+		this.rightTextWrapper.setAttribute('class','textWrapper');
+		this.backgroundVert.append(this.leftTextWrapper);
+		this.backgroundVert.append(this.rightTextWrapper);
+		this.initButtons();
+		this.background.append(this.backgroundVert);
+		this.background.append(this.buttonWrapper);
+		this.sceneWrapper.append(this.background);
+	}
 	initSelectors(){
 
 		//left side ui selectors
@@ -48,7 +80,9 @@ export class Scene4{
 		this.selectorWrapper.style.display='flex';
 		this.selectorWrapper.style.flexDirection='column';
 		this.selectorWrapper.style.justifyContent='space-between';
-		
+		this.selectorWrapper.style.backgroundImage='url(\''+this.textureL.src+'\')';
+		this.selectorWrapper.style.border='medium inset rgba(250,180,50,0.5)';
+
 		this.selectorImg.forEach(function(val){
 			this.selectors.push(document.createElement('button'));
 			this.selectors[this.selectors.length-1].style.backgroundImage='url(\''+val.src+'\')';
@@ -74,10 +108,9 @@ export class Scene4{
 		}.bind(this));
 		
 		this.buttonsVertical=document.createElement('div');
-		this.buttonsVertical.style.justifyContent='space-between';
+		this.buttonsVertical.style.justifyContent='flex-end';
 		this.buttonsVertical.append(this.buttons[1]);
 		this.buttonsVertical.append(this.buttons[2]);
-		this.buttonsVertical.append(this.buttons[0]);
 		this.buttonsVertical.setAttribute('class','buttonsContainer');
 		this.buttonsVertical.style.order=2;
 			
@@ -95,8 +128,8 @@ export class Scene4{
 		this.buttonsRight.setAttribute('class','buttonsContainer');
 		this.buttonsRight.style.order=3;
 		
-		this.buttonWrapper.style.height='30%';	
-		this.buttonWrapper.style.width='50%';
+		this.buttonWrapper.style.height='10%';	
+		this.buttonWrapper.style.width='100%';
 		this.buttonWrapper.style.display='flex';
 		this.buttonWrapper.style.flexDirection='row';
 		this.buttonWrapper.style.justifyContent='space-between';
@@ -115,7 +148,7 @@ export class Scene4{
 			scrollButton.style.width='50%';
 			this.scrollBar[this.scrollBar.length-1].style.width='10%';
 			this.scrollBar[this.scrollBar.length-1].style.height='100%';
-			this.scrollBar[this.scrollBar.length-1].style.position='absolute';
+			this.scrollBar[this.scrollBar.length-1].style.position='relative';
 			scrollButton.style.position='absolute';
 			scrollButton.style.left='25%';
 			scrollButton.style.top='5%';
@@ -150,6 +183,26 @@ export class Scene4{
 			}.bind(this);
 			this.scrollPos.push(pos);
 	}
-	init(){
+	initChar(){
+		this.characterWrapper=document.createElement('div');
+		this.characterWrapper.setAttribute('class','uiWrapper');
+		this.characterWrapper.style.width='10%';
+		this.characterWrapper.style.height='100%';
+		this.characterWrapper.style.display='flex';
+		this.characterWrapper.style.flexDirection='column';
+		this.characterWrapper.style.justifyContent='flex-top';
+		this.characterWrapper.style.backgroundImage='url(\''+this.textureL.src+'\')';
+		this.characterWrapper.style.border='medium outset rgba(250,180,50,0.5)';
+
+		this.charSelectorImg.forEach(function(val){
+			this.characters.push(document.createElement('button'));
+			this.characters[this.characters.length-1].style.backgroundImage='url(\''+val.src+'\')';
+			this.characters[this.characters.length-1].setAttribute('class', 'uiButton character');
+			this.characters[this.characters.length-1].setAttribute('type', 'button');
+			this.characters[this.characters.length-1].style.order=this.characters.length;
+		}.bind(this));
+		this.characters.forEach(function(val){
+			this.characterWrapper.append(val);
+		}.bind(this));
 	}
 }

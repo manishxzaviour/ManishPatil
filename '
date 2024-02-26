@@ -1,0 +1,51 @@
+export class Scene4{
+	constructor(sceneWrapper){
+		this.sceneWrapper=sceneWrapper;
+		this.background=document.createElement('div');;
+		this.selectorWrapper=document.createElement('div');
+		
+		this.bg=new Image();
+		this.border=new Image();
+		this.scrollBar=new Image();
+		this.scrollButton=new Image();
+		this.textureD=new Image();
+		this.textureL=new Image();
+		this.textureLCrack=new Image();
+		this.selectorImg=[];
+		this.buttonsImg=[];
+		this.selectors=[];
+		this.headdingWrapper=new Image();
+		
+		for(let x=1;x<=9;x++){
+			this.selectorImg.push(new Image());
+			console.log(this.selectorImg[1]);//.src='./res/scene4/ui/selectors'+x+'.png';
+		}
+		for(let x=1;x<=8;x++){
+			this.buttonImg.push(new Image());
+			this.buttonImg.lastChild.src='./res/scene4/ui/buttons'+x+'.png';
+		}
+
+		this.bg.src='./res/scene4/bg.png';
+		this.border.src='./res/scene4/border.png';
+		this.scrollBar.src='./res/scene4/ui/scroll/scrollBar.png';
+		this.scrollButton.src='./res/scene4/ui/scroll/button.png';
+		this.textureD.src='./res/scene4/textureD.png';
+		this.textureL.src='./res/scene4/textureL.png';
+		this.textureLCrack.src='./res/scene4/textureLCrack.png';
+		this.headdingWrapper.src='./res/scene4/ui/headdingWrapper.png';
+	
+		this.init=this.init.bind(this);
+	}
+	init(){
+		this.sceneWrapper.append(this.selectorWrapper);
+		let count=0;
+		this.selectorImg.forEach(function(val){
+			this.selectors.push(document.createElement('button'));
+			this.selectors.lastChild.backgroundImage=this.selectorsImg[count];
+			count++;
+		}.bind(this));
+		this.selectors.forEach(function(val){
+			this.selectorWrapper.append(val);
+		}.bind(this))
+	}
+}

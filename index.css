@@ -6,11 +6,11 @@ body{
 	padding:0px;
 	z-index:1;
 }
-body:hover{
-	cursor: url('./res/cursor/normal.cur'), auto;
-}
 body:active{
 	cursor:url('./res/cursor/click.cur'), grabbing;
+}
+body:hover{
+	cursor: url('./res/cursor/normal.cur'), auto;
 }
 h1{
 	color:ivory; 
@@ -29,16 +29,37 @@ canvas div{
 	width:100%;
 	position:fixed;
 }
-.scene2Button{
+.uiButton{
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	width:100%;
 	border:none;
 	background-color:transparent;
-	filter: drop-shadow(-5px 5px rgba(250,200,200,0.3));
+	filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.5));
 }
-.scene2Button:hover{
+.uiButton:hover{
 	cursor:url('./res/cursor/help.cur'), help;
-	transform:scale(0.95,0.95);
+	transform:scale(1.1);
+	filter: drop-shadow(5px 5px 2px rgba(50,50,50,0.5));
 }
-
+.uiButton:active{
+	cursor:url('./res/cursor/click.cur'), grabbing;
+	transform:scale(0.9);
+	filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.2));
+}
+.uiWrapper{
+}
+.selector{
+	width:100%;
+	height:10%;
+}
+.buttonsContainer{
+	display:flex;
+	flex-direction:column;
+	height:100%;
+	width:30%;
+}
+.buttonsContainer button{
+	height:30%;
+	width:100%;
+}

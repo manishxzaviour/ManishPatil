@@ -10,11 +10,11 @@ export class Scene2{
 		this.book=document.createElement('button');
 		this.book.style.height='75%';
 		this.book.style.backgroundImage='url(\'./res/scene2/book.png\')';
-		this.book.setAttribute('class','scene2Button');
+		this.book.setAttribute('class','uiButton');
 		this.book.setAttribute('type','button');
 		
 		this.downloadButton=document.createElement('button');
-		this.downloadButton.setAttribute('class','scene2Button');
+		this.downloadButton.setAttribute('class','uiButton');
 		this.downloadButton.style.height='25%';
 		this.downloadButton.style.backgroundImage='url(\'./res/scene2/resume.png\')';
 		this.downloadButton.setAttribute('type','button');
@@ -53,7 +53,6 @@ export class Scene2{
 		this.downloadButton.onclick=function(e){
 			window.location.assign(window.location+'res/downloads/ManishPatil.pdf');
 		}.bind(this);
-		
 		this.wrapper.append(this.book);
 		this.wrapper.append(this.downloadButton);
 		this.wrapper.append(this.contextDiv);

@@ -46,11 +46,13 @@ export class Scene4{
 		this.init=this.init.bind(this);
 
 
-		this.sampletext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis urna id volutpat lacus laoreet non. Amet facilisis magna etiam tempor orci eu. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Vitae congue mauris rhoncus aenean vel elit. Enim neque volutpat ac tincidunt. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Lectus urna duis convallis convallis tellus id interdum velit. Convallis convallis tellus id interdum velit. Condimentum id venenatis a condimentum. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Suspendisse in est ante in nibh mauris cursus.<br>Neque viverra justo nec ultrices dui sapien eget mi. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Morbi quis commodo odio aenean. Lectus urna duis convallis convallis tellus id. Nunc non blandit massa enim. Tempus quam pellentesque nec nam aliquam sem. Dictum sit amet justo donec enim diam. Etiam dignissim diam quis enim lobortis scelerisque fermentum. Imperdiet massa tincidunt nunc pulvinar. Arcu odio ut sem nulla. Aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate eu scelerisque felis imperdiet proin. Pharetra diam sit amet nisl suscipit. Massa vitae tortor condimentum lacinia quis vel eros. In pellentesque massa placerat duis ultricies. Orci ac auctor augue mauris augue neque.<br>A diam sollicitudin tempor id eu nisl nunc mi ipsum. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Dignissim convallis aenean et tortor at risus. Laoreet id donec ultrices tincidunt. Tincidunt praesent semper feugiat nibh. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Nec dui nunc mattis enim ut tellus elementum sagittis. Felis bibendum ut tristique et egestas. Ultricies lacus sed turpis tincidunt id. Donec enim diam vulputate ut pharetra sit amet.<br>Nulla at volutpat diam ut venenatis tellus. Nulla aliquet enim tortor at auctor urna. Scelerisque varius morbi enim nunc. Turpis nunc eget lorem dolor sed viverra ipsum. Sit amet cursus sit amet dictum sit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Venenatis cras sed felis eget velit aliquet sagittis id. Sit amet commodo nulla facilisi nullam vehicula. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Molestie ac feugiat sed lectus vestibulum. Ipsum suspendisse ultrices gravida dictum fusce. Viverra adipiscing at in tellus integer. Id leo in vitae turpis massa sed elementum tempus. Eu sem integer vitae justo eget magna fermentum iaculis.<br>Aliquam sem et tortor consequat id porta nibh venenatis. Sagittis orci a scelerisque purus semper eget duis at. Blandit libero volutpat sed cras ornare arcu dui vivamus. Arcu bibendum at varius vel pharetra. Sit amet mattis vulp';
+		this.sampletext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis urna id volutpat lacus laoreet non. Amet facilisis magna etiam tempor orci eu. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Vitae congue mauris rhoncus aenean vel elit. Enim neque volutpat ac tincidunt. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Lectus urna duis convallis convallis tellus id interdum velit. Convallis convallis tellus id interdum velit. Condimentum id venenatis a condimentum. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Suspendisse in est ante in nibh mauris cursus.<br>Neque viverra justo nec ultrices dui sapien eget mi. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Morbi quis commodo odio aenean. Lectus urna duis convallis convallis tellus id. Nunc non blandit massa enim. Tempus quam pellentesque nec nam aliquam sem. Dictum sit amet justo donec enim diam. Etiam dignissim diam quis enim lobortis scelerisque fermentum. Imperdiet massa tincidunt nunc pulvinar. Arcu odio ut sem nulla. Aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate eu scelerisque felis imperdiet proin. Pharetra diam sit amet nisl suscipit. Massa vitae tortor condimentum lacinia quis vel eros. In pellentesque massa placerat duis ultricies. Orci ac auctor augue mauris augue neque.<br>A diam sollicitudin tempor id eu nisl nunc mi ipsum. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Dignissim convallis aenean et tortor at risus. Laoreet id donec ultrices tincidunt. Tincidunt praesent semper feugiat nibh. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Nec dui nunc mattis enim ut tellus elementum sagittis. Felis bibendum ut tristique et egestas. Ultricies lacus sed turpis tincidunt id. Donec enim diam vulputate ut pharetra sit amet.<br>Nulla at volutpat diam ut venenatis tellus. Nulla aliquet enim tortor at auctor urna. Scelerisque varius morbi enim nunc. Turpis nunc eget lorem dolor sed viverra ipsum. Sit amet cursus sit amet dictum sit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Venenatis cras sed felis eget velit aliquet sagittis id. Sit amet commodo nulla facilisi nullam vehicula. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Molestie ac feugiat sed lectus vestibulum. Ipsum suspendisse ultrices gravida dictum fusce. Viverra adipiscing at in tellus integer. Id leo in vitae turpis massa sed elementum tempus. Eu sem integer vitae justo eget magna fermentum iaculis.<br>Aliquam sem et tortor consequat id porta nibh venenatis. Sagittis orci a scelerisque purus semper eget duis at. Blandit libero volutpat sed cras ornare arcu dui vivamus. Arcu bibendum at varius vel pharetra. Sit amet matt';
 	}
-	/*{
-			}*/
 	init(){
+		let txt= new TextWrapper(this.sampletext,this.z,true);
+		this.sceneWrapper.append(txt.wrapper);
+	}
+	initBg(){
 		this.background=document.createElement('div');
 		this.background.style.backgroundImage='url(\''+this.bg.src+'\')';
 		this.background.style.height='100%';
@@ -129,8 +131,8 @@ export class Scene4{
 		this.buttonWrapper.style.left='1%';
 		this.buttonWrapper.style.order=2;
 		this.background.append(this.buttonWrapper);
-		this.sceneWrapper.append(this.background);
 	}
+
 	initButtons(){
 		 //center ui buttons
 		this.buttonWrapper=document.createElement('div');
@@ -255,63 +257,39 @@ class ScrollBar{
 		this.scrollBar.style.backgroundImage='url(\''+this.scrollBarImg.src+'\')';
 		this.scrollButton.style.backgroundImage='url(\''+this.scrollButtonImg.src+'\')';
 		this.scrollButton.style.aspectRatio=1;
-		this.scrollButton.style.width='160%';
 		this.scrollBar.style.width='100%';
 		this.scrollBar.style.height='100%';
 		this.scrollBar.style.zIndex=this.z;
 		this.scrollBar.style.position='fixed';
-		this.scrollButton.style.position='absolute';
-		this.scrollButton.style.left='-30%';
+		this.scrollButton.style.position='sticky';
 		this.scrollButton.style.top='5%';
+		this.scrollButton.setAttribute('type','button');
+		this.scrollButton.setAttribute('class','uiButton');
 		this.scrollButton.style.zIndex=this.z+1;
 		this.scrollBar.style.backgroundRepeat='no-repeat';
 		this.scrollBar.style.backgroundSize='100% 100%';
 		this.scrollBar.style.backgroundColor='transparent';
-		this.scrollBar.append(this.scrollButton);
-		this.scrollButton.setAttribute('type','button');
-		this.scrollButton.setAttribute('class','uiButton');
-		//on scroll not by slider
-		this.block.onscroll=function(){
-			this.scrollto(this.block.scrollTop/this.block.scrollHeight);
-		}.bind(this);
-		//drag scrollSlider
-		this.scrollButton.onmousedown=function(e){
-			this.block.onscroll=null;
-			this.scrollPos[1]=e.clientY;
-			document.onmousemove=function(p){
-				this.scrollPos[2]=
-					100*(-this.scrollBar.clientTop+this.scrollButton.offsetTop)
-					/this.scrollBar.clientHeight;
-				// margin from top bottom 5%
-				this.scrollButton.style.top=
-					(this.scrollPos[2]>=5&&this.scrollPos[2]<=90)
-					?this.scrollPos[2]:((this.scrollPos[2]>90)?90:5)+'%';
-				//current-prev mousePos
-				this.scrollPos[0]=p.clientY-this.scrollPos[1];
-				this.scrollPos[1]=p.clientY;
-				//set path height with top offset
-				let scroll=this.scrollButton.offsetTop-this.scrollBar.clientTop+this.scrollPos[0];
-				this.scrollButton.style.top=scroll+'px';
-				let val=(this.scrollPos[2]-5)/85;
-				this.scrollTo=((val>1||val<0)?((val>1)?1:0):val);
-				this.block.scrollTo(0,this.scrollTo*this.block.scrollHeight);
-			}.bind(this);
-			document.onmouseup=function(){
-				document.onmousemove=null;
-				document.onmouseup=null;
-				this.block.onscroll=function(){
-					this.scrollto(this.block.scrollTop/this.block.scrollHeight);
-				}.bind(this);
-			}.bind(this);
-		}.bind(this);
+		this.scrollBar.style.overflow='scroll';
+		this.scrollBar.style.fontSize='1px';
+		this.scrollBar.style.lineHeight=1;
+		this.scrollBar.onscroll=this.scrollHandle;
+		setTimeout(function(){
+			this.scrollBar.append(this.scrollButton);
+			for(let x=0;x<=this.block.scrollHeight*1.1;x+=10){
+				this.scrollBar.innerHTML+='<br><br><br><br><br><br><br><br><br><br>';
+			}
+		}.bind(this),2000);
 	}
-	scrollto(val){
-		this.block.scrollTo(0,val*this.block.scrollHeight);
-		this.scrollButton.style.top=this.scrollBar.clientHeight*(val*0.9+0.05)+'px';
+	scrollHandle(e){
+		e.target.parentNode.firstChild.scrollTo(0,e.target.scrollTop*0.9);
+		e.target.parentNode.lastChild.firstChild.style.top=
+			e.target.scrollTop*0.9*e.target.clientHeight*devicePixelRatio
+			/e.target.parentNode.firstChild.scrollHeight
+			+'px';
 	}
 }
 class TextWrapper{
-	constructor(text,z){
+	constructor(text,z,scroll){
 		this.wrapper=document.createElement('div');
 		this.wrapper.setAttribute('class','textWrapper');
 		this.wrapper.style.height='100%';
@@ -323,10 +301,10 @@ class TextWrapper{
 		this.text=document.createElement('div');
 		this.text.setAttribute('class','textWrapper');
 		this.text.style.position='releative';
-		this.text.style.width='93%';
+		this.text.style.width=scroll?'93%':'96%';
 		this.text.style.height='94%';
 		this.text.style.margin='2%';
-		this.text.style.overflow='scroll';
+		this.text.style.overflow=scroll?'scroll':'hidden';
 		this.text.style.border='medium rgba(200,120,100,0.5)';
 		this.text.style.borderStyle='solid none solid none';
 		this.text.style.order=1;
@@ -338,6 +316,6 @@ class TextWrapper{
 		this.scrollBar.scrollBar.style.position='relative';
 
 		this.wrapper.append(this.text);
-		this.wrapper.append(this.scrollBar.scrollBar);
+		if(scroll)this.wrapper.append(this.scrollBar.scrollBar);
 	}
 }

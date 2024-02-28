@@ -1,0 +1,17 @@
+
+		this.scrollBar.style.overflow='scroll';
+		this.scrollBar.style.fontSize='1px';
+		this.scrollBar.style.lineHeight=1;
+		this.scrollBar.onscroll=this.scrollHandle;
+		setTimeout(function(){
+			for(let x=0;x<=this.block.scrollHeight*1.1;x+=10){
+				this.scrollBar.innerHTML+='<br><br><br><br><br><br><br><br><br><br>';
+			}
+			this.scrollBar.append(this.scrollButton);
+		}.bind(this),2000);
+		this.scrollHandle=this.scrollHandle.bind(this);
+	}
+	scrollHandle(e){
+		e.target.parentNode.firstChild.scrollTo(0,e.target.scrollTop*0.9);
+		console.log(
+			e.target.scrollTop/(e.target.scrollHeight

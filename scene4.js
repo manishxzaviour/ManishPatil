@@ -284,14 +284,14 @@ class ScrollBar{
 					/this.scrollBar.clientHeight;
 				// margin from top bottom 5%
 				this.scrollButton.style.top=
-					(this.scrollPos[2]>=5&&this.scrollPos[2]<=90)
-					?this.scrollPos[2]:((this.scrollPos[2]>90)?90:5)+'%';
+					(this.scrollPos[2]>=5&&this.scrollPos[2]<=85)
+					?this.scrollPos[2]:((this.scrollPos[2]>85)?85:5)+'%';
 				//current-prev mousePos
 				this.scrollPos[0]=p.clientY-this.scrollPos[1];
 				this.scrollPos[1]=p.clientY;
 				//set path height with top offset
 				let scroll=this.scrollButton.offsetTop-this.scrollBar.clientTop+this.scrollPos[0];
-				this.scrollButton.style.top=scroll+'px';
+				this.scrollButton.style.top=100*scroll/this.scrollBar.clientHeight+'%';
 				let val=(this.scrollPos[2]-5)/85;
 				this.scrollTo=((val>1||val<0)?((val>1)?1:0):val);
 				this.block.scrollTo(0,this.scrollTo*this.block.scrollHeight);
@@ -307,7 +307,7 @@ class ScrollBar{
 	}
 	scrollto(val){
 		this.block.scrollTo(0,val*this.block.scrollHeight);
-		this.scrollButton.style.top=this.scrollBar.clientHeight*(val*0.9+0.05)+'px';
+		this.scrollButton.style.top=100*(val+0.05)+'%';
 	}
 }
 class TextWrapper{

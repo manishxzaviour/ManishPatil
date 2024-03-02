@@ -44,7 +44,7 @@ canvas div{
 	filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.5));
 }
 .uiButton:hover{
-	cursor:url('./res/cursor/help.cur'), help;
+	cursor:url('./res/cursor/pointer.cur'), help;
 	transform:scale(1.1);
 	filter: drop-shadow(5px 5px 2px rgba(50,50,50,0.5));
 }
@@ -94,7 +94,7 @@ canvas div{
 	position:absolute;
 	width:100%;
 	height:100%;
-    z-index: 100;
+    z-index: 5;
     -webkit-perspective: 1300px;
     perspective: 1300px;
     -webkit-backface-visibility: hidden;
@@ -121,20 +121,16 @@ canvas div{
 }
 
 #first {
-    z-index: 102;
+    z-index: 7;
 }
 #second {
-    z-index: 103;
+    z-index: 8;
     transition: transform 0.8s ease-in-out;
 }
 #fourth {
-    z-index: 101;
-    transition: transform 0.8s ease-in-out;
+    z-index: 6;
 }
 
-#fourth {
-    z-index: 101;
-}
 .page > div,
 .outer,
 .content,
@@ -162,7 +158,7 @@ canvas div{
 .outer {
 	width: 100%;
 	overflow: hidden;
-    z-index: 999;
+    z-index: 10;
 }
 
 /* problematic class: `.content` */
@@ -185,11 +181,11 @@ canvas div{
     position: absolute;
     width: 33%;
     height: 100%;
-    z-index: 999;
+    z-index: 10;
 }
 #prev:hover, #select:hover, #next:hover {
     background: rgba(0,0,0,0.1);
-    cursor:url('./res/cursor/help.cur'), help;
+    cursor:url('./res/cursor/pointer.cur'), help;
 }
 #prev {
     top: 0;

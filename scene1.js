@@ -33,7 +33,7 @@ export class Scene1{
 
 		this.cockatoo1=[
 			[0.5,0.48],
-			['white',`${this.fontSize}em sans-serif`],
+			['white',`${this.fontSize}px sans-serif`],
 			'Hey POKEY!                                                      ',
 			'what are you reading?                            '
 		]; 

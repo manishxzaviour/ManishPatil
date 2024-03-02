@@ -24,7 +24,10 @@ export class Scene2{
 		this.contextDiv.style.font='serif';
 		this.contextDiv.style.border='1px dotted purple';
 		this.contextDiv.style.color='rgb(150,150,150)';
+		this.contextDiv.style.filter='drop-shadow(2px 2px rgba(0,0,0,0.5))';
 		this.contextDiv.style.zIndex=5;
+
+		this.pages=[];
 		
 		this.book.addEventListener('mouseover',function(e){
 			this.book.addEventListener('mousemove',function(e){
@@ -35,11 +38,83 @@ export class Scene2{
 		}.bind(this));
 		
 		this.book.onclick=function(e){
-			this.wrapper.style.filter='blur(10px)';
+			//this.wrapper.style.filter='blur(10px)';
 			this.downloadButton.remove();
-			this.book.style.transition='1s';
-			this.book.style.backgroundImage='url(\'./res/scene2/bookOpen.png\')';
-			this.done=true;
+			this.book.remove();
+			this.wrapper.setAttribute('class','textWrapper');
+			this.wrapper.style.position='fixed';
+			this.wrapper.style.width='auto';
+			this.wrapper.style.aspectRatio='2';
+			this.wrapper.style.height='80%';
+			this.wrapper.style.top='10%';
+			this.wrapper.style.left=window.innerWidth/2-this.wrapper.clientWidth/2+'px';
+			
+			//tympanus.net> bookflip
+
+			for(let x=0;x<this.pageCount;x++){
+				this.pages.push(document.createElement('div'));
+				this.pages[x].setAttribute('class','bookPage');
+				this.pages[x].style.zIndex=this.z+1+this.pageCount-x;
+				this.pages[x].setAttribute('id',`page${x}`);
+				this.pages[x].append(document.createElement('div'));
+				this.pages[x].firstChild.setAttribute('class',(x%2==0)?'pageBack':'pageFront');
+				if(x%2==0){
+					this.pages[x].firstChild.style.webkitTransform='rotateY(180deg)';
+					this.pages[x].firstChild.style.transform='rotateY(180deg)';
+					this.pages[x].firstChild.style.left='-100%';
+				}
+				else{
+					this.page[x].style.transition='transform 0.8s ease-in-out';
+
+					this.pages[x].firstChild.style.webkitTransform='rotateY(-180deg)';
+					this.pages[x].firstChild.style.transform='rotateY(-180deg)';
+				}
+				this.pages[x].firstChild.append(document.createElement('div'));
+				this.pages[x].firstChild.firstChild.setAttribute('class','pageContainer');
+				this.pages[x].firstChild.firstChild.style.overflow='hidden';
+				this.pages[x].firstChild.firstChild.append(document.createElement('div'));
+				this.pages[x].firstChild.firstChild.firstChild.setAttribute('class','pageContent');
+				this.pages[x].firstChild.firstChild.firstChild.style.width='200%';
+				this.pages[x].firstChild.firstChild.firstChild.style.width='-100%';
+				//this.pages[x].firstChild.firstChild.firstChild.append(document.createElement('img'));
+				//this.pages[x].firstChild.firstChild.firstChild.firstChild.src=this.pageContent[x];
+				this.pages[x].firstChild.firstChild.firstChild.setAttribute('class','textWrapper');
+			}
+			this.pages.forEach(function(val){
+				this.bookWrapper.append(val);
+			}.bind(this));
+
+
+			//leftPage
+			this.bookWrapper.append(document.createElement('div'));
+			this.bookWrapper.lastChild.style.position='absolute';
+			this.bookWrapper.lastChild.style.top='0px';
+			this.bookWrapper.lastChild.style.left='0px';
+			this.bookWrapper.lastChild.style.width='50%';
+			this.bookWrapper.lastChild.style.height='100%';
+			this.bookWrapper.lastChild.onmouseover=(e)=>{e.target.style.background='rgba(0,0,0,0.1)'};
+			this.bookWrapper.lastChild.onclick=function(e) {
+			    second.style.msTransform = "rotateY(0deg)";
+			    second.style.webkitTransform = "rotateY(0deg)";
+			    second.style.transform = "rotateY(0deg)";
+			};
+			
+
+			//rightPage
+			this.bookWrapper.append(document.createElement('div'));
+			this.bookWrapper.lastChild.style.position='absolute';
+			this.bookWrapper.lastChild.style.top='0px';
+			this.bookWrapper.lastChild.style.left='50%';
+			this.bookWrapper.lastChild.style.width='50%';
+			this.bookWrapper.lastChild.style.height='100%';
+			this.bookWrapper.lastChild.onmouseover=(e)=>{e.target.style.background='rgba(0,0,0,0.1)'};
+			this.bookWrapper.lastChild.onclick=function(e) {		
+			    second.style.msTransform = "rotateY(-180deg)";
+			    second.style.webkitTransform = "rotateY(-180deg)";
+			    second.style.transform = "rotateY(-180deg)";
+			}
+
+			this.wrapper.append(this.bookWrapper);
 		}.bind(this);
 
 		this.downloadButton.addEventListener('mouseover',function(e){

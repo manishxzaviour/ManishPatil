@@ -44,13 +44,13 @@ export class Scene4{
 		this.headdingWrapper.src='./res/scene4/ui/headdingWrapper.png';
 		
 		this.init=this.init.bind(this);
+		
+		this.rightWrapperText='';
 
-
-		this.sampletext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis urna id volutpat lacus laoreet non. Amet facilisis magna etiam tempor orci eu. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Vitae congue mauris rhoncus aenean vel elit. Enim neque volutpat ac tincidunt. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Lectus urna duis convallis convallis tellus id interdum velit. Convallis convallis tellus id interdum velit. Condimentum id venenatis a condimentum. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Suspendisse in est ante in nibh mauris cursus.<br>Neque viverra justo nec ultrices dui sapien eget mi. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Morbi quis commodo odio aenean. Lectus urna duis convallis convallis tellus id. Nunc non blandit massa enim. Tempus quam pellentesque nec nam aliquam sem. Dictum sit amet justo donec enim diam. Etiam dignissim diam quis enim lobortis scelerisque fermentum. Imperdiet massa tincidunt nunc pulvinar. Arcu odio ut sem nulla. Aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate eu scelerisque felis imperdiet proin. Pharetra diam sit amet nisl suscipit. Massa vitae tortor condimentum lacinia quis vel eros. In pellentesque massa placerat duis ultricies. Orci ac auctor augue mauris augue neque.<br>A diam sollicitudin tempor id eu nisl nunc mi ipsum. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Dignissim convallis aenean et tortor at risus. Laoreet id donec ultrices tincidunt. Tincidunt praesent semper feugiat nibh. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Nec dui nunc mattis enim ut tellus elementum sagittis. Felis bibendum ut tristique et egestas. Ultricies lacus sed turpis tincidunt id. Donec enim diam vulputate ut pharetra sit amet.<br>Nulla at volutpat diam ut venenatis tellus. Nulla aliquet enim tortor at auctor urna. Scelerisque varius morbi enim nunc. Turpis nunc eget lorem dolor sed viverra ipsum. Sit amet cursus sit amet dictum sit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Venenatis cras sed felis eget velit aliquet sagittis id. Sit amet commodo nulla facilisi nullam vehicula. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Molestie ac feugiat sed lectus vestibulum. Ipsum suspendisse ultrices gravida dictum fusce. Viverra adipiscing at in tellus integer. Id leo in vitae turpis massa sed elementum tempus. Eu sem integer vitae justo eget magna fermentum iaculis.<br>Aliquam sem et tortor consequat id porta nibh venenatis. Sagittis orci a scelerisque purus semper eget duis at. Blandit libero volutpat sed cras ornare arcu dui vivamus. Arcu bibendum at varius vel pharetra. Sit amet mattis vulp';
 	}
-	/*{
-			}*/
 	init(){
+	}
+	initBg(){
 		this.background=document.createElement('div');
 		this.background.style.backgroundImage='url(\''+this.bg.src+'\')';
 		this.background.style.height='100%';
@@ -74,50 +74,50 @@ export class Scene4{
 		this.vertWrapper.style.justifyContent='space-arround';
 		this.vertWrapper.style.order=1;
 
-		this.centerWrapper=document.createElement('div');
-		this.centerWrapper.style.position='relative';
-		this.centerWrapper.style.height='100%';
-		this.centerWrapper.style.width='25%';
-		this.centerWrapper.style.order=2;
-		this.centerWrapper.style.display='flex';
-		this.centerWrapper.style.flexDirection='column';
-		this.centerWrapper.style.justifyContent='space-arround';
+		this.leftWrapper=document.createElement('div');
+		this.leftWrapper.style.position='relative';
+		this.leftWrapper.style.height='100%';
+		this.leftWrapper.style.width='25%';
+		this.leftWrapper.style.order=2;
+		this.leftWrapper.style.display='flex';
+		this.leftWrapper.style.flexDirection='column';
+		this.leftWrapper.style.justifyContent='space-arround';
 
-		this.centerTop=document.createElement('div');
-		this.centerTop.setAttribute('class','textWrapper');
-		this.centerTop.style.position='relative';
-		this.centerTop.style.top='3%';
-		this.centerTop.style.height='60%';
-		this.centerTop.style.width='100%';
-		this.centerTop.style.order=1;
-		this.centerTop.style.borderRadius='3%';
+		this.leftTop=document.createElement('div');
+		this.leftTop.setAttribute('class','textWrapper');
+		this.leftTop.style.position='relative';
+		this.leftTop.style.top='3%';
+		this.leftTop.style.height='60%';
+		this.leftTop.style.width='100%';
+		this.leftTop.style.order=1;
+		this.leftTop.style.borderRadius='3%';
 	
-		this.centerMiddle=document.createElement('div');
-		this.centerMiddle.style.backgroundImage='url(\''+this.textureD.src+'\')';
-		this.centerMiddle.style.position='relative';
-		this.centerMiddle.style.top='5%';
-		this.centerMiddle.style.height='18%';
-		this.centerMiddle.style.width='100%';
-		this.centerMiddle.style.order=2;	
-		this.centerMiddle.style.borderRadius='3%';
+		this.leftMiddle=document.createElement('div');
+		this.leftMiddle.style.backgroundImage='url(\''+this.textureD.src+'\')';
+		this.leftMiddle.style.position='relative';
+		this.leftMiddle.style.top='5%';
+		this.leftMiddle.style.height='18%';
+		this.leftMiddle.style.width='100%';
+		this.leftMiddle.style.order=2;	
+		this.leftMiddle.style.borderRadius='3%';
 		
 		this.buttons[0].style.position='relative';
 		this.buttons[0].style.top='7%';
 		this.buttons[0].style.height='10%';
 		this.buttons[0].style.order=3;
 
-		this.centerWrapper.append(this.centerTop);
-		this.centerWrapper.append(this.centerMiddle);
-		this.centerWrapper.append(this.buttons[0]);
+		this.leftWrapper.append(this.leftTop);
+		this.leftWrapper.append(this.leftMiddle);
+		this.leftWrapper.append(this.buttons[0]);
 		
-		this.rightWrapper=new TextWrapper(this.sampletext,this.z);
+		this.rightWrapper=new TextWrapper(this.rightWrapperText,this.z);
 		this.rightWrapper.wrapper.style.position='relative';
 		this.rightWrapper.wrapper.style.left='1.5%';
 		this.rightWrapper.wrapper.style.height='96%';
 		this.rightWrapper.wrapper.style.width='73.5%';
 		this.rightWrapper.wrapper.style.order=3;	
 
-		this.vertWrapper.append(this.centerWrapper);
+		this.vertWrapper.append(this.leftWrapper);
 		this.vertWrapper.append(this.rightWrapper.wrapper);
 		this.background.append(this.vertWrapper);
 
@@ -129,7 +129,7 @@ export class Scene4{
 		this.buttonWrapper.style.left='1%';
 		this.buttonWrapper.style.order=2;
 		this.background.append(this.buttonWrapper);
-		this.sceneWrapper.append(this.background);
+	
 	}
 	initButtons(){
 		 //center ui buttons
@@ -292,9 +292,10 @@ class ScrollBar{
 				//set path height with top offset
 				let scroll=this.scrollButton.offsetTop-this.scrollBar.clientTop+this.scrollPos[0];
 				this.scrollButton.style.top=100*scroll/this.scrollBar.clientHeight+'%';
-				let val=(this.scrollPos[2]-5)/85;
-				this.scrollTo=((val>1||val<0)?((val>1)?1:0):val);
-				this.block.scrollTo(0,this.scrollTo*this.block.scrollHeight);
+				let val=(this.scrollPos[2]-5)/80;
+				val=((val>1||val<0)?((val>1)?1:0):val);
+				//does not scroll mapped all the way due to scrollTop undercutting
+				this.block.scrollTo(0,val*this.block.scrollHeight);
 			}.bind(this);
 			document.onmouseup=function(){
 				document.onmousemove=null;

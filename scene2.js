@@ -50,69 +50,37 @@ export class Scene2{
 			this.wrapper.style.left=window.innerWidth/2-this.wrapper.clientWidth/2+'px';
 			
 			//tympanus.net> bookflip
+			this.bookWrapper=document.createElement('div');
 
 			for(let x=0;x<this.pageCount;x++){
 				this.pages.push(document.createElement('div'));
-				this.pages[x].setAttribute('class','bookPage');
-				this.pages[x].style.zIndex=this.z+1+this.pageCount-x;
-				this.pages[x].setAttribute('id',`page${x}`);
-				this.pages[x].append(document.createElement('div'));
-				this.pages[x].firstChild.setAttribute('class',(x%2==0)?'pageBack':'pageFront');
-				if(x%2==0){
-					this.pages[x].firstChild.style.webkitTransform='rotateY(180deg)';
-					this.pages[x].firstChild.style.transform='rotateY(180deg)';
-					this.pages[x].firstChild.style.left='-100%';
+				let pageContainer=this.pages[x];
+				pageContainer.append(document.createElement('div'));
+				pageContainer.setAttribute('class','pageContainer');
+				let back=pageContainer.firstChild;
+				back.setAttribute('class','pageBack');
+				back.append(document.createElement('div'));
+				let outer=back.firstChild;
+				outer.append(document.createElement('div'));
+				let content=outer.firstChild;
+				content.append(document.createElement('img'));
+				content.firstChild.src=this.pageContent[x];
+				if(x%2!=0){
+					pageContainer.append(document.createElement('div'));
+					let front=pageContainer.lastChild;
+					front.setAttribute('class','pageFront');
+					front.append(document.createElement('div'));
+					outer=front.firstChild;
+					outer.append(document.createElement('div'));
+					let content=outer.firstChild;
+					content.append(document.createElement('img'));
+					content.firstChild.src=this.pageContent[x+1];
 				}
-				else{
-					this.page[x].style.transition='transform 0.8s ease-in-out';
-
-					this.pages[x].firstChild.style.webkitTransform='rotateY(-180deg)';
-					this.pages[x].firstChild.style.transform='rotateY(-180deg)';
-				}
-				this.pages[x].firstChild.append(document.createElement('div'));
-				this.pages[x].firstChild.firstChild.setAttribute('class','pageContainer');
-				this.pages[x].firstChild.firstChild.style.overflow='hidden';
-				this.pages[x].firstChild.firstChild.append(document.createElement('div'));
-				this.pages[x].firstChild.firstChild.firstChild.setAttribute('class','pageContent');
-				this.pages[x].firstChild.firstChild.firstChild.style.width='200%';
-				this.pages[x].firstChild.firstChild.firstChild.style.width='-100%';
-				//this.pages[x].firstChild.firstChild.firstChild.append(document.createElement('img'));
-				//this.pages[x].firstChild.firstChild.firstChild.firstChild.src=this.pageContent[x];
-				this.pages[x].firstChild.firstChild.firstChild.setAttribute('class','textWrapper');
 			}
 			this.pages.forEach(function(val){
 				this.bookWrapper.append(val);
 			}.bind(this));
 
-
-			//leftPage
-			this.bookWrapper.append(document.createElement('div'));
-			this.bookWrapper.lastChild.style.position='absolute';
-			this.bookWrapper.lastChild.style.top='0px';
-			this.bookWrapper.lastChild.style.left='0px';
-			this.bookWrapper.lastChild.style.width='50%';
-			this.bookWrapper.lastChild.style.height='100%';
-			this.bookWrapper.lastChild.onmouseover=(e)=>{e.target.style.background='rgba(0,0,0,0.1)'};
-			this.bookWrapper.lastChild.onclick=function(e) {
-			    second.style.msTransform = "rotateY(0deg)";
-			    second.style.webkitTransform = "rotateY(0deg)";
-			    second.style.transform = "rotateY(0deg)";
-			};
-			
-
-			//rightPage
-			this.bookWrapper.append(document.createElement('div'));
-			this.bookWrapper.lastChild.style.position='absolute';
-			this.bookWrapper.lastChild.style.top='0px';
-			this.bookWrapper.lastChild.style.left='50%';
-			this.bookWrapper.lastChild.style.width='50%';
-			this.bookWrapper.lastChild.style.height='100%';
-			this.bookWrapper.lastChild.onmouseover=(e)=>{e.target.style.background='rgba(0,0,0,0.1)'};
-			this.bookWrapper.lastChild.onclick=function(e) {		
-			    second.style.msTransform = "rotateY(-180deg)";
-			    second.style.webkitTransform = "rotateY(-180deg)";
-			    second.style.transform = "rotateY(-180deg)";
-			}
 
 			this.wrapper.append(this.bookWrapper);
 		}.bind(this);

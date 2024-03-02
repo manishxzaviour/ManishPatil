@@ -90,30 +90,116 @@ canvas div{
 /*
  * tympanus.net > bookflip
  */
-
-.bookWrapper{
-	width: 100%;
-	height: 100%;
-	position: relative;
-
-	-webkit-perspective: 1300px;
-	perspective: 1300px;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+.pageContainer {
+	position:absolute;
+	width:100%;
+	height:100%;
+    z-index: 100;
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
-.pageContainer{
+
+.page {
 	position: absolute;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	-webkit-transition-property: -webkit-transform;
 	transition-property: transform;
-
 	width: 50%;
 	height: 100%;
 	left: 50%;
 	-webkit-transform-origin: left center;
 	transform-origin: left center;
 }
-.pageBack{
 
+#first,
+#first .back {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+#first {
+    z-index: 102;
+}
+#second {
+    z-index: 103;
+    transition: transform 0.8s ease-in-out;
+}
+#fourth {
+    z-index: 101;
+    transition: transform 0.8s ease-in-out;
+}
+
+#fourth {
+    z-index: 101;
+}
+.page > div,
+.outer,
+.content,
+.helper-class-to-make-bug-visbile {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.page > div {
+	width: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.back {
+	-webkit-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+
+.outer {
+	width: 100%;
+	overflow: hidden;
+    z-index: 999;
+}
+
+/* problematic class: `.content` */
+.content {
+    width: 200%;
+}
+.content img{
+	width:100%;
+	height:100%;
+}
+
+.front .content {
+	left: -100%;
+}
+
+
+
+/* controls */
+#prev, #next ,#select{
+    position: absolute;
+    width: 33%;
+    height: 100%;
+    z-index: 999;
+}
+#prev:hover, #select:hover, #next:hover {
+    background: rgba(0,0,0,0.1);
+    cursor:url('./res/cursor/help.cur'), help;
+}
+#prev {
+    top: 0;
+    left: 0;
+}
+#select{
+	top:0;
+	left:33%;
+}
+#next {
+    top: 0;
+    left: 66%;
 }

@@ -27,13 +27,11 @@ export class Scene2{
 		this.contextDiv.style.filter='drop-shadow(2px 2px rgba(0,0,0,0.5))';
 		this.contextDiv.style.zIndex=5;
 
-		this.pages=[];
-		
 		this.book.addEventListener('mouseover',function(e){
 			this.book.addEventListener('mousemove',function(e){
 				this.contextDiv.style.top=e.clientY-this.contextDiv.clientHeight-5+'px';
 				this.contextDiv.style.left=e.clientX-this.contextDiv.clientWidth-5+'px';
-				this.contextDiv.innerHTML='Interactive map';
+				this.contextDiv.innerHTML='Explore [interactive]';
 			}.bind(this))
 		}.bind(this));
 		
@@ -41,48 +39,89 @@ export class Scene2{
 			//this.wrapper.style.filter='blur(10px)';
 			this.downloadButton.remove();
 			this.book.remove();
-			this.wrapper.setAttribute('class','textWrapper');
-			this.wrapper.style.position='fixed';
+			this.wrapper.style.position='relative';
 			this.wrapper.style.width='auto';
 			this.wrapper.style.aspectRatio='2';
 			this.wrapper.style.height='80%';
 			this.wrapper.style.top='10%';
 			this.wrapper.style.left=window.innerWidth/2-this.wrapper.clientWidth/2+'px';
 			
+			this.bookOpen1=new Image();
+			this.bookOpen2=new Image();
+			this.bookOpen1.src='./res/scene2/1.png';
+			this.bookOpen2.src='./res/scene2/2.png';
+
 			//tympanus.net> bookflip
 			this.bookWrapper=document.createElement('div');
+			this.bookWrapper.innerHTML=`
+				<div class="pageContainer">
+				    <div class="page" id="first">
+					<div class="back">
+					    <div class="outer">
+						<div class="content">
+							<img src="./res/scene2/1.png">
+						</div>
+					    </div>
+					</div>
+				    </div>
+				    <div class="page" id="second">
+					<div class="front">
+					    <div class="outer">
+						<div class="content">
+						    <img src="./res/scene2/1.png">
+						</div>
+					    </div>
+					</div>
+					<div class="back" id="third">
+					    <div class="outer">
+						<div class="content">
+							    <img src="./res/scene2/2.png">
+						</div>
+					    </div>
+					</div>
+				    </div>
+				    <div class="page" id="fourth">
+					<div class="front">
+					    <div class="outer">
+						<div class="content">
+						   <img src="./res/scene2/2.png">
+						    
+						</div>
+					    </div>
+					</div>
+				    </div>
 
-			for(let x=0;x<this.pageCount;x++){
-				this.pages.push(document.createElement('div'));
-				let pageContainer=this.pages[x];
-				pageContainer.append(document.createElement('div'));
-				pageContainer.setAttribute('class','pageContainer');
-				let back=pageContainer.firstChild;
-				back.setAttribute('class','pageBack');
-				back.append(document.createElement('div'));
-				let outer=back.firstChild;
-				outer.append(document.createElement('div'));
-				let content=outer.firstChild;
-				content.append(document.createElement('img'));
-				content.firstChild.src=this.pageContent[x];
-				if(x%2!=0){
-					pageContainer.append(document.createElement('div'));
-					let front=pageContainer.lastChild;
-					front.setAttribute('class','pageFront');
-					front.append(document.createElement('div'));
-					outer=front.firstChild;
-					outer.append(document.createElement('div'));
-					let content=outer.firstChild;
-					content.append(document.createElement('img'));
-					content.firstChild.src=this.pageContent[x+1];
-				}
-			}
-			this.pages.forEach(function(val){
-				this.bookWrapper.append(val);
-			}.bind(this));
-
-
+				    <div id="prev"></div>
+				    <div id="select"></div>
+				    <div id="next"></div>
+				</div>
+			`;
 			this.wrapper.append(this.bookWrapper);
+			let prev = document.getElementById("prev");
+			let next = document.getElementById("next");
+			let select = document.getElementById("select");
+
+			prev.addEventListener("click", prevImg.bind(this));
+			next.addEventListener("click", nextImg.bind(this));
+			select.addEventListener("click", sel.bind(this));
+
+
+
+			let second = document.getElementById('second');
+			let fourth= document.getElementById('fourth');
+
+			function prevImg() {
+				    second.style.msTransform = "rotateY(0deg)";
+				    second.style.webkitTransform = "rotateY(0deg)";
+				    second.style.transform = "rotateY(0deg)";
+			}
+			function nextImg() {
+				    second.style.msTransform = "rotateY(-180deg)";
+				    second.style.webkitTransform = "rotateY(-180deg)";
+				    second.style.transform = "rotateY(-180deg)";
+			}
+			function sel(){
+			}
 		}.bind(this);
 
 		this.downloadButton.addEventListener('mouseover',function(e){

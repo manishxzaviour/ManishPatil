@@ -47,19 +47,19 @@ export class Scene4{
 		
 		this.rightWrapperText='';
 
-<<<<<<< HEAD
+
 
 		this.sampletext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Iaculis urna id volutpat lacus laoreet non. Amet facilisis magna etiam tempor orci eu. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Vitae congue mauris rhoncus aenean vel elit. Enim neque volutpat ac tincidunt. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Lectus urna duis convallis convallis tellus id interdum velit. Convallis convallis tellus id interdum velit. Condimentum id venenatis a condimentum. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Suspendisse in est ante in nibh mauris cursus.<br>Neque viverra justo nec ultrices dui sapien eget mi. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Morbi quis commodo odio aenean. Lectus urna duis convallis convallis tellus id. Nunc non blandit massa enim. Tempus quam pellentesque nec nam aliquam sem. Dictum sit amet justo donec enim diam. Etiam dignissim diam quis enim lobortis scelerisque fermentum. Imperdiet massa tincidunt nunc pulvinar. Arcu odio ut sem nulla. Aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate eu scelerisque felis imperdiet proin. Pharetra diam sit amet nisl suscipit. Massa vitae tortor condimentum lacinia quis vel eros. In pellentesque massa placerat duis ultricies. Orci ac auctor augue mauris augue neque.<br>A diam sollicitudin tempor id eu nisl nunc mi ipsum. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Dignissim convallis aenean et tortor at risus. Laoreet id donec ultrices tincidunt. Tincidunt praesent semper feugiat nibh. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Nec dui nunc mattis enim ut tellus elementum sagittis. Felis bibendum ut tristique et egestas. Ultricies lacus sed turpis tincidunt id. Donec enim diam vulputate ut pharetra sit amet.<br>Nulla at volutpat diam ut venenatis tellus. Nulla aliquet enim tortor at auctor urna. Scelerisque varius morbi enim nunc. Turpis nunc eget lorem dolor sed viverra ipsum. Sit amet cursus sit amet dictum sit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Venenatis cras sed felis eget velit aliquet sagittis id. Sit amet commodo nulla facilisi nullam vehicula. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Molestie ac feugiat sed lectus vestibulum. Ipsum suspendisse ultrices gravida dictum fusce. Viverra adipiscing at in tellus integer. Id leo in vitae turpis massa sed elementum tempus. Eu sem integer vitae justo eget magna fermentum iaculis.<br>Aliquam sem et tortor consequat id porta nibh venenatis. Sagittis orci a scelerisque purus semper eget duis at. Blandit libero volutpat sed cras ornare arcu dui vivamus. Arcu bibendum at varius vel pharetra. Sit amet matt';
 	}
 	init(){
 		let txt= new TextWrapper(this.sampletext,this.z,true);
 		this.sceneWrapper.append(txt.wrapper);
-=======
+
 	}
 	init(){
 		this.initBg();
 		this.sceneWrapper.append(this.background);
->>>>>>> tmp
+
 	}
 	initBg(){
 		this.background=document.createElement('div');
@@ -140,10 +140,10 @@ export class Scene4{
 		this.buttonWrapper.style.left='1%';
 		this.buttonWrapper.style.order=2;
 		this.background.append(this.buttonWrapper);
-<<<<<<< HEAD
-=======
+
+
 	
->>>>>>> tmp
+
 	}
 
 	initButtons(){
@@ -282,7 +282,7 @@ class ScrollBar{
 		this.scrollBar.style.backgroundRepeat='no-repeat';
 		this.scrollBar.style.backgroundSize='100% 100%';
 		this.scrollBar.style.backgroundColor='transparent';
-<<<<<<< HEAD
+
 		this.scrollBar.style.overflow='scroll';
 		this.scrollBar.style.fontSize='1px';
 		this.scrollBar.style.lineHeight=1;
@@ -300,7 +300,7 @@ class ScrollBar{
 			e.target.scrollTop*0.9*e.target.clientHeight*devicePixelRatio
 			/e.target.parentNode.firstChild.scrollHeight
 			+'px';
-=======
+
 		this.scrollBar.append(this.scrollButton);
 		this.scrollButton.setAttribute('type','button');
 		this.scrollButton.setAttribute('class','uiButton');
@@ -343,7 +343,7 @@ class ScrollBar{
 	scrollto(val){
 		this.block.scrollTo(0,val*this.block.scrollHeight);
 		this.scrollButton.style.top=100*(val+0.05)+'%';
->>>>>>> tmp
+
 	}
 }
 class TextWrapper{

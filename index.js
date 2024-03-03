@@ -10,19 +10,21 @@ import {Scene4} from "./scene4.js";
 let sceneWrapper=document.querySelector('#sceneWrapper');
 sceneWrapper.width=window.innerWidth*devicePixelRatio;
 sceneWrapper.height=window.innerHeight*devicePixelRatio;
-//let scene1=new Scene1(sceneWrapper);
+let scene1=new Scene1(sceneWrapper);
 let scene2=new Scene2(sceneWrapper);
-//let scene3=new Scene3(sceneWrapper);
-//let scene4=new Scene4(sceneWrapper); 
-//let flags=[true,true,true];
+let scene3=new Scene3(sceneWrapper);
+let scene4=new Scene4(sceneWrapper); 
+let flags=[true,true,true,true];
 function sceneScheduler(){
 	if(scene1.done && flags[0]){
 		flags[0]=false;
-		setTimeout(scene2.init,300);
+		setTimeout(()=>{
+			scene2.init();
+		},300);
 	}
 	else if(scene2.done && flags[1]){
 		flags[1]=false;
-		setTimeout(scene3.init,500);
+		setTimeout((scene2.nextScene==0)?scene3.init:scene4.init,500);
 	}
 	else if(scene3.done && flags[2]){
 		flags[2]=false;
@@ -36,5 +38,4 @@ function sceneScheduler(){
 	}
 	setTimeout(sceneScheduler,100)
 }
-//sceneScheduler();
-scene2.init();
+sceneScheduler();

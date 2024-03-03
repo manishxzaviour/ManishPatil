@@ -82,7 +82,7 @@ export class Scene2{
 			//this.wrapper.style.filter='blur(10px)';
 			this.downloadButton.remove();
 			this.book.remove();
-			this.wrapper.style.position='relative';
+			this.wrapper.style.position='fixed';
 			this.wrapper.style.width='auto';
 			this.wrapper.style.aspectRatio='2';
 			this.wrapper.style.height='80%';

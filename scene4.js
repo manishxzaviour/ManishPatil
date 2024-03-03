@@ -10,7 +10,7 @@ export class Scene4{
 		this.headdingWrapper=new Image();
 		this.buttonsImg=[];
 		this.buttons=[];
-		this.z=Number(this.sceneWrapper.style.zIndex);
+		this.z=Number(this.sceneWrapper.style.zIndex+20);
 		
 		this.selectorImgUrl='./res/scene4/ui/selectors/';
 		this.selectorCallback=[];
@@ -49,12 +49,14 @@ export class Scene4{
 
 	}
 	init(){
+		this.initBg();
+		this.sceneWrapper.append(this.background);
 	}
 	initBg(){
 		this.background=document.createElement('div');
+		this.background.setAttribute('class','background');
 		this.background.style.backgroundImage='url(\''+this.bg.src+'\')';
-		this.background.style.height='100%';
-		this.background.style.width='100%';
+		this.background.style.zIndex=20;
 		this.background.style.backgroundSize='100% 100%';
 		this.background.style.backgroundRepeat='no-repeat';
 		this.background.style.display='flex';

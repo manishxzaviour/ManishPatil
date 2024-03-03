@@ -5,7 +5,21 @@ export class Scene2{
 		this.wrapper.style.position='fixed';
 		this.wrapper.style.zIndex=4;
 		this.wrapper.style.display='none';
-		this.wrapper.style.top='20%';
+
+		this.bookImg=new Image();
+		this.bookFlat=new Image();
+		this.page1=new Image();
+		this.page2=new Image();
+		this.resume=new Image();
+
+		this.bookImg.src="./res/scene2/book.png";
+		this.bookFlat.src="./res/scene2/bookFlat.png";
+		this.page1.src="./res/scene2/1.png";
+		this.page2.src="./res/scene2/2.png";
+		this.resume.src="./res/scene2/resume.png";
+
+
+
 
 		this.book=document.createElement('button');
 		this.book.style.height='75%';
@@ -88,11 +102,6 @@ export class Scene2{
 			this.wrapper.style.height='80%';
 			this.wrapper.style.top='10%';
 			this.wrapper.style.left=window.innerWidth/2-this.wrapper.clientWidth/2+'px';
-			
-			this.bookOpen1=new Image();
-			this.bookOpen2=new Image();
-			this.bookOpen1.src='./res/scene2/1.png';
-			this.bookOpen2.src='./res/scene2/2.png';
 
 			//tympanus.net> bookflip
 			this.bookWrapper=document.createElement('div');
@@ -177,8 +186,8 @@ export class Scene2{
 	init(){
 		if(this.startFrameCount>0){
 			this.wrapper.style.display='block';
-			this.wrapper.style.top=this.scale*0.5+'%';
-			this.wrapper.style.right=this.scale*32+'%';
+			this.wrapper.style.bottom=this.scale*0.5+'%';
+			this.wrapper.style.left=32+'%';
 			this.wrapper.style.width=35*this.scale+'%';
 			this.wrapper.style.height=100*this.scale+'%';
 			this.scale=(1-this.startFrameCount/60);

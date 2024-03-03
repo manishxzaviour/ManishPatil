@@ -34,87 +34,31 @@ export class Scene1{
 		this.cockatoo1=[
 			[0.5,0.48],
 			['white',`${this.fontSize}px sans-serif`],
+			'Bored! Bored! Bored!                        ',
 			'Hey POKEY!                                                      ',
 			'what are you reading?                            '
 		]; 
 		this.porcupine1=[
 			[0.3,0.85],
-			['aqua',`${this.fontSize}px serif`],
-			'Sigh, I am reading a book                                   ',
-			'...on gravitational curvature affecting...                          ',
-			'...Sigh, book on space navigation...                            ',
-			'...navigation around small asteroids                            ',
+			['aqua',`${this.fontSize}px sherwood`],
+			'...STILL AROUND THE CORNER THERE MAY WAIT                   ',
+			'A NEW ROAD OR A SECRET GATE                     ',
+			'TOMMOROW WE MAY COME THIS WAY                   ',
+			'AND TAKE THE HIDDEN PATHS THAT RUN              ',
+			'TOWARDS THE MOON OR THE SUN...                  '
 		];
 		this.cat1=[
 			[0.55,0.85], 
 			['skyblue',`${this.fontSize}px cursive`],
-			'yawn wow that sounds Fun                                  ',
-			'well I am getting bored too...                            ',
-			'...mind telling me             ',
-			'WHY are you reading this BOOK of yours                    ',
+			'wow THAT came out of the blue                        ',
+			'maybe he should take a break now                      ',
+			'...whats he reading anyway',
 		];
 		this.cockatoo2=[
 			[0.5,0.48],
 			['orange',`${this.fontSize}px sans-serif`],
-			'Well we did recieve this guest...             ',
-			'...from outerspace...                         ',
-			'and he is in a ...boxed condition                               ',
-		];
-		this.porcupine2=[
-			[0.3,0.85],
-			['aqua',`${this.fontSize}px serif`],
-			'Well, yes it is for him.                ',
-			'...for some odd reason,                 ',
-			'his navigation did not account for it.               ',
-			'I will patch him up when i am done reading                  ',
-		];
-		this.cockatoo3=[
-			[0.5,0.48],
-			['yellow',`${this.fontSize}px sans-serif`],
-			'Wow! you will?                         ',
-			'well I wish I was as resourcefull as you                     ',
-			'how are you going to go about it?                     ',
-		];
-		this.cat2=[
-			[0.55,0.85], 
-			['white',`${this.fontSize}px cursive`],
-			'how are you going to deal with...                ',
-			'...such complex constitution?                    ',
-			'he is not that simple to repair, is he?             '
-		];
-		this.porcupine3=[
-			[0.3,0.85],
-			['aqua',`${this.fontSize}px serif`],
-			'no. not simple at all           ',
-			'...electronic, mechanical, software systems...       ',
-		];
-		this.cockatoo4=[
-			[0.5,0.48],
-			['yellow',`${this.fontSize}px sans-serif`],
-			'Yeah, well you are a Mechatronics Engineer                        ',
-			'well I do have recollection of            ',
-			'us talking about your projects...              ',
-			'...just faint...                      '
-		];
-		this.cat3=[
-			[0.55,0.85], 
-			['white',`${this.fontSize}px cursive`],
-			'Well he did tell us before...            ',
-			'...I too don\'t remember the specifics              ',
-			'how about telling us about it?                       '
-		];
-		this.porcupine4=[
-			[0.3,0.85],
-			['aqua',`${this.fontSize}px serif`],
-			'Well I dont mind...                     ',
-			'but fixing our Mr.robo comes first...                    ',
-			'how about reading this booklet for now?                  ',
-			'...well, I wrote it as a record for myself               ',
-		];
-		this.cockatoo5=[
-			[0.5,0.48],
-			['aqua',`${this.fontSize}px sans-serif`],
-			'Sure I love reading!                                      '	
+			'Wow he\'s sooo mean shruging me off                ',
+			'well let me see what you are reading               ',
 		];
 		this.dialogueCounter=[2,0];
 		this.currentDialoguePosition=[0,0];
@@ -188,95 +132,7 @@ export class Scene1{
 						this.background.width,
 						this.background.height
 					);
-					this.dialogueFill(this.cockatoo2,5);
-					break;
-
-				case 5:	//porcupine2
-					this.backgroundContext.drawImage(
-						this.charMask2,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.porcupine2,6);
-					break;
-//copcacopcocapcocapco
-				case 6:	//cockatoo3
-					this.backgroundContext.drawImage(
-						this.charMask1,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.cockatoo3,7);
-					break;
-
-
-				case 7:	//cat2
-					this.backgroundContext.drawImage(
-						this.charMask3,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.cat2,8);
-					break;
-
-				case 8:	//porcupine3
-					this.backgroundContext.drawImage(
-						this.charMask2,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.porcupine3,9);
-					break;
-
-				case 9:	//cockatoo4
-					this.backgroundContext.drawImage(
-						this.charMask1,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.cockatoo4,10);
-					break;
-
-				case 10://cat3
-					this.backgroundContext.drawImage(
-						this.charMask3,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.cat3,11);
-					break;
-				case 11://porcupine4
-					this.backgroundContext.drawImage(
-						this.charMask2,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.porcupine4,12);
-					break;
-
-				case 12://cockatoo5
-					this.backgroundContext.drawImage(
-						this.charMask1,
-						0,
-						0,
-						this.background.width,
-						this.background.height
-					);
-					this.dialogueFill(this.cockatoo5,0);
+					this.dialogueFill(this.cockatoo2,0);
 					break;
 
 				case 0:// scene change Transition
